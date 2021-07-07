@@ -11,8 +11,9 @@ spec:
     metadata: 
       labels:
         component: web
-    containers:
-      - image: stephengrider/multi-client
-        name: multi-client
-        ports:
-          - containerPort: 3000
+    spec:
+      containers:
+        - image: stephengrider/multi-client
+          name: multi-client
+          ports:
+            - containerPort: 3000
