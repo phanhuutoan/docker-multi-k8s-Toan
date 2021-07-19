@@ -1,15 +1,15 @@
 apiVersion: apps/v1
-metadata: 
+metadata:
   name: postgres-deployment
 kind: Deployment
-spec: 
+spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       component: postgres
   template:
     metadata:
-      labels: 
+      labels:
         component: postgres
     spec:
       containers:
@@ -21,14 +21,13 @@ spec:
             - mountPath: /var/lib/postgresql/data
               subPath: postgres
               name: postgres-volume
-          env: 
-            - name: PGPASSWORD
+          env:
+            - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: db-password-secret
+                  name: db-pwd-secret
                   key: pgpassword
       volumes:
         - name: postgres-volume
           persistentVolumeClaim:
             claimName: db-persistent-volume-claim
-    
