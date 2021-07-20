@@ -9,7 +9,7 @@ before_install:
   - openssl aes-256-cbc -K $encrypted_fb71c9b0c271_key -iv $encrypted_fb71c9b0c271_iv -in gc-auth.json.enc -out gc-auth.json -d
   - curl https://sdk.cloud.google.com | bash > /dev/null
   - source $HOME/google-cloud-sdk/path.bash.inc
-  - gcloud component update kubectl
+  - gcloud components update kubectl
   - gcloud auth activate-service-account --key-file=gc-auth.json
   - gcloud config set project multi-k8s-320211
   - gcloud config set compute/zone asia-southeast1-a
